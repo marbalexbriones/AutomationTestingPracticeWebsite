@@ -23,6 +23,13 @@ Then('the information must be filled correctly', async function () {
     await delay(3000);
 });
 
+When ('I enter the country {string}, color {string} and pet {string}', async function (country, color, pet) {
+    this.playgroundPage = this.playgroundPage || new PlaygroundPage(this.driver); 
+    await this.playgroundPage.selectDrodpDownValue("country", country);
+    await this.playgroundPage.selectDrodpDownValue("colors", color);
+    await this.playgroundPage.selectDrodpDownValue("animals", pet);
+});
+
 
 function delay(ms) {
           return new Promise(resolve => setTimeout(resolve, ms));

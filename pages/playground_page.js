@@ -14,6 +14,8 @@ class PlaygroundPage extends BasePage {
         this.addressInput = By.id('textarea');
         this.maleGender = By.id('male');
         this.femaleGender = By.id('female');
+        this.countryDropDown = By.id('country');
+
     }
     
     async navigateToPlaygroundPage() {
@@ -38,6 +40,11 @@ class PlaygroundPage extends BasePage {
     async selectFavoriteDay(day){
         const favoriteDay = await By.id(String(day).toLowerCase());
         await this.click(favoriteDay);
+    }
+
+    async selectDrodpDownValue(dropdown, value){
+        const dropdownElement = await this.waitForElementVisible(By.id(dropdown));
+        await dropdownElement.findElement(By.xpath(`.//option[normalize-space()='${value}']`)).click();
     }
 }
 
